@@ -368,7 +368,7 @@ bool Adafruit_MQTT::publish(const char *topic, uint8_t *data, uint16_t bLen,
     //if (packnum != packet_id_counter)
     //  return false;
   }
-  DEBUG_PRINT("Todo OK! /n/n");
+  DEBUG_PRINT(F("Todo OK! /n/n"));
   return true;
 }
 
