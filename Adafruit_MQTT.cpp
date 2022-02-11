@@ -355,8 +355,10 @@ bool Adafruit_MQTT::publish(const char *topic, uint8_t *data, uint16_t bLen,
 
     DEBUG_PRINT(F("Publish QOS1+ reply:\t"));
     DEBUG_PRINTBUFFER(buffer, len);
-    if (len != 4)
+    if (len != 4){
+      DEBUG_PRINT("\nMuere en len != 4\n");
       return false;
+      }
 
     uint16_t packnum = buffer[2];
     packnum <<= 8;
@@ -368,7 +370,7 @@ bool Adafruit_MQTT::publish(const char *topic, uint8_t *data, uint16_t bLen,
     //if (packnum != packet_id_counter)
     //  return false;
   }
-  DEBUG_PRINT(F("Todo OK! /n/n"));
+  DEBUG_PRINT("\n\nTodo OK!\n\n");
   return true;
 }
 
