@@ -346,20 +346,18 @@ bool Adafruit_MQTT::publish(const char *topic, uint8_t *data, uint16_t bLen,
   // Construct and send publish packet.
   uint16_t len =
       publishPacket(buffer, topic, data, bLen, qos, (uint16_t)sizeof(buffer));
-  if (!sendPacket(buffer, len))
-    return false;
-
+  if (!sendPacket(buffer, len)){
+    return false;}
   // If QOS level is high enough verify the response packet.
   if (qos > 0) {
     len = processPacketsUntil(buffer, MQTT_CTRL_PUBACK, PUBLISH_TIMEOUT_MS);
-
-    DEBUG_PRINT(F("Publish QOS1+ reply:\t"));
-    DEBUG_PRINTBUFFER(buffer, len);
+    Serial.println("Publish QOS1+ reply:");
+    // DEBUG_PRINTBUFFER(buffer, len);
+    Serial.println("LEN: " + String(len));
     if (len != 4){
-      DEBUG_PRINT("\nMuere en len != 4\n");
+      Serial.println("Muere en len != 4");
       return false;
-      }
-
+    }
     uint16_t packnum = buffer[2];
     packnum <<= 8;
     packnum |= buffer[3];
@@ -367,10 +365,15 @@ bool Adafruit_MQTT::publish(const char *topic, uint8_t *data, uint16_t bLen,
     // we increment the packet_id_counter right after publishing so inc here too
     // to match
     packnum++;
-    //if (packnum != packet_id_counter)
-    //  return false;
+    DEBUG_PRINT("CHECKING PACKNUM...\n");
+    DEBUG_PRINT(String("PACKET ID COUNTER = " + String(packet_id_counter)+"\n"));
+    DEBUG_PRINT(String("PACKNUM = " + String(packnum)+"\n"));
+    // if (packnum != packet_id_counter){
+    //   Serial.println("Muere en packnum != packet_id_counter");
+    //   return false;
+    // }
   }
-  DEBUG_PRINT("\n\nTodo OK!\n\n");
+  DEBUG_PRINT("TODO OK!");
   return true;
 }
 
