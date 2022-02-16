@@ -1,6 +1,6 @@
-# Librería MQTT de Redefine (basado en Adafruit MQTT v2.4.2)
+# Librería MQTT de Redefine v2.5.0
 
-Librería Adafruit MQTT base: https://github.com/adafruit/Adafruit_MQTT_Library
+Librería Adafruit MQTT base (v2.4.2): https://github.com/adafruit/Adafruit_MQTT_Library
 
 Se hizo este _fork_ para arreglar un par de problemas que tenía la librería base, principalmente:
 
