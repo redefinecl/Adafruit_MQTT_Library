@@ -3,7 +3,7 @@
 
 #include <Adafruit_MQTT.h>
 #include <Adafruit_MQTT_Client.h>
-#include "modem.h"
+//#include "modem.h"
 
 // Configuracion MQTT
 #define AIO_SERVER      "campana.redefine.cl"
