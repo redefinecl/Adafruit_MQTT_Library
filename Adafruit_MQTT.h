@@ -125,7 +125,9 @@
 #define SUBSCRIPTIONDATALEN 20
 #else
 #define MAXSUBSCRIPTIONS 15
-#define SUBSCRIPTIONDATALEN 100
+#ifndef SUBSCRIPTIONDATALEN
+  #define SUBSCRIPTIONDATALEN 8192
+#endif
 #endif
 
 class AdafruitIO_MQTT; // forward decl
