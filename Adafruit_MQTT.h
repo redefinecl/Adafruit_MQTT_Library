@@ -34,9 +34,10 @@
 #define ADAFRUIT_MQTT_VERSION_PATCH 0
 
 // Uncomment/comment to turn on/off debug output messages.
-#define MQTT_DEBUG
+// These flags should be set in the platformio.ini file of the project!
+// #define MQTT_DEBUG
 // Uncomment/comment to turn on/off error output messages.
-#define MQTT_ERROR
+// #define MQTT_ERROR
 
 // Set where debug messages will be printed.
 #define DEBUG_PRINTER Serial
@@ -124,7 +125,9 @@
 #define SUBSCRIPTIONDATALEN 20
 #else
 #define MAXSUBSCRIPTIONS 15
-#define SUBSCRIPTIONDATALEN 100
+#ifndef SUBSCRIPTIONDATALEN
+  #define SUBSCRIPTIONDATALEN 8192
+#endif
 #endif
 
 class AdafruitIO_MQTT; // forward decl
